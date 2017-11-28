@@ -8,7 +8,7 @@ public class ObjectCollectionManager : Singleton<ObjectCollectionManager>
     [Tooltip("A collection of Wide building prefabs to generate in the world.")]
     public List<GameObject> WideBuildingPrefabs;
 
-    [Tooltip("The desired size of wide buildings in the world.")]
+    [Tooltip("The desired size of Holograms in the world.")]
     public Vector3 WideBuildingSize = new Vector3(1.0f, .5f, .5f);
 
     [Tooltip("The ground to place under buildings.")]
