@@ -1,0 +1,11 @@
+Assembly-CSharp-firstpass.dll
+Assembly-CSharp.dll
+Assembly-UnityScript-firstpass.dll
+Boo.Lang.dll
+Newtonsoft.Json.dll
+UnityEngine.Analytics.dll
+UnityEngine.Timeline.dll
+nunit.framework.dll
+UnityEngine.UI.dll
+UnityEngine.HoloLens.dll
+UnityEngine.Networking.dll
