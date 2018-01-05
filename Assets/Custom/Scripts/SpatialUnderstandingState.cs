@@ -22,6 +22,7 @@ public class SpatialUnderstandingState : Singleton<SpatialUnderstandingState>, I
     public bool HideText = false;
 
     private bool ready = false;
+    private bool complete = false;
 
     private string _spaceQueryDescription;
 
@@ -117,14 +118,14 @@ public class SpatialUnderstandingState : Singleton<SpatialUnderstandingState>, I
     {
         get
         {
-            ready = DoesScanMeetMinBarForCompletion;
+            complete = DoesScanMeetMinBarForCompletion;
             if (SpatialUnderstanding.Instance.ScanState == SpatialUnderstanding.ScanStates.Scanning)
             {
                 if (trackedHandsCount > 0)
                 {
-                    return ready ? Color.green : Color.red;
+                    return complete ? Color.green : Color.red;
                 }
-                return ready ? Color.yellow : Color.white;
+                return complete ? Color.yellow : Color.white;
             }
 
             // If we're looking at the menu, fade it out
@@ -174,21 +175,24 @@ public class SpatialUnderstandingState : Singleton<SpatialUnderstandingState>, I
 
     private void Update_DebugDisplay()
     {
-        // Basic checks
-        if (DebugDisplay == null)
+        if (ready)
         {
-            return;
-        }
+            // Basic checks
+            if (DebugDisplay == null)
+            {
+                return;
+            }
 
-        // Update display text
-        DebugDisplay.text = PrimaryText;
-        DebugDisplay.color = PrimaryColor;
-        DebugSubDisplay.text = DetailsText;
+            // Update display text
+            DebugDisplay.text = PrimaryText;
+            DebugDisplay.color = PrimaryColor;
+            DebugSubDisplay.text = DetailsText;
+        }
     }
 
     private void Start()
     {
-        InputManager.Instance.PushFallbackInputHandler(gameObject);
+        //InputManager.Instance.PushFallbackInputHandler(gameObject);
     }
 
     // Update is called once per frame
@@ -210,12 +214,13 @@ public class SpatialUnderstandingState : Singleton<SpatialUnderstandingState>, I
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
-        if (ready &&
+        /*
+        if (complete &&
             (SpatialUnderstanding.Instance.ScanState == SpatialUnderstanding.ScanStates.Scanning) &&
             !SpatialUnderstanding.Instance.ScanStatsReportStillWorking)
         {
             SpatialUnderstanding.Instance.RequestFinishScan();
-        }
+        }*/
     }
 
     void ISourceStateHandler.OnSourceDetected(SourceStateEventData eventData)
