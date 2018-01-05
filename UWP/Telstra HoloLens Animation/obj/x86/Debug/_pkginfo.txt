@@ -1,0 +1,1 @@
+D:\Unity\Projects\Telstra HoloLens Animation\UWP\Telstra HoloLens Animation\AppPackages\Telstra HoloLens Animation_1.0.0.1_x86_Debug_Test\Telstra HoloLens Animation_1.0.0.1_x86_Debug.appx
